@@ -1,6 +1,7 @@
 name: Docker Compose Actions Workflow
 on:
-  push:
+  discussion:
+    types: [created, edited, answered]
     branches:
       - dev
 jobs:
