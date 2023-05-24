@@ -11,14 +11,14 @@ RUN mvn install
 FROM builder as dev-envs
 
 RUN <<EOF
-sudo apt-get update
-sudo apt-get install -y git
+apt-get update
+apt-get install -y git
 EOF
 
 RUN <<EOF
-sudo useradd -s /bin/bash -m vscode
-sudo groupadd docker
-sudo usermod -aG docker vscode
+useradd -s /bin/bash -m vscode
+groupadd docker
+usermod -aG docker vscode
 EOF
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
