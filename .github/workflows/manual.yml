@@ -1,5 +1,7 @@
 name: Docker Compose Actions Workflows
 on:
+  label:
+    types: [created, edited]
   push:
     branches:
       - dev
