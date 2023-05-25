@@ -14,7 +14,7 @@ services:
       - spring-mysql
   backend:
     build:
-      context: backend
+      context: .
       dockerfile: backend/Dockerfile
       target: development
     environment:
@@ -27,7 +27,7 @@ services:
     restart: on-failure:5
   frontend:
     build:
-      context: frontend
+      context: .
       dockerfile: frontend/Dockerfile
       target: development
     ports:
