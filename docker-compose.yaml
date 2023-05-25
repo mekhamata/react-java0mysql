@@ -14,7 +14,8 @@ services:
       - spring-mysql
   backend:
     build:
-      context: backend
+      context: ./backend
+      dockerfile: Dockerfile
       target: development
     environment:
       MYSQL_HOST: db
@@ -26,7 +27,8 @@ services:
     restart: on-failure:5
   frontend:
     build:
-      context: frontend
+      context: ./frontend
+      dockerfile: Dockerfile
       target: development
     ports:
       - 3000:3000
