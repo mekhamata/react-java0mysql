@@ -15,13 +15,24 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Build the stack
+    - name: Build the compose
+      run: docker compose build
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: up the compose
       run: docker compose up -d
-    - name: Set env as secret
-      env:
-        MY_VAL: ${{ secrets.TEST_SECRET }}
-      run: |
-        import os
-        for q in (os.getenv("MY_VAL")):
-          print(q)
-      shell: python
+    # - name: Set env as secret
+    #   env:
+    #     MY_VAL: ${{ secrets.TEST_SECRET }}
+    #   run: |
+    #     import os
+    #     for q in (os.getenv("MY_VAL")):
+    #       print(q)
+    #   shell: python
+      
