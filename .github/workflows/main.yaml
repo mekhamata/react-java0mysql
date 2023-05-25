@@ -20,7 +20,7 @@ jobs:
     - name: create and list containers
       run: |
         docker compose create
-        docker compose ps
+        docker compose ps -a
     - name: Set env as secret
       env:
         MY_VAL: ${{ secrets.TEST_SECRET }}
