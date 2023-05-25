@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Build the stack
       run: docker compose build
-    - name: show used images for containers:
+    - name: show used images for containers
       run: docker compose images
     - name: Set env as secret
       env:
