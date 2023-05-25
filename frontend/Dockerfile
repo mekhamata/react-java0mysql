@@ -11,4 +11,4 @@ COPY . /code
 ENV CI=true
 ENV PORT=3000
 
-ENTRYPOINT [ "npm", "test" ]
+ENTRYPOINT [ "npm", "start" ]
