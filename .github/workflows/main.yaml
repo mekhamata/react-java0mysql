@@ -16,11 +16,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Build the stack
-      run: docker compose build
-    - name: create and list containers
-      run: |
-        docker compose create
-        docker compose ps -a
+      run: docker compose up -d
     - name: Set env as secret
       env:
         MY_VAL: ${{ secrets.TEST_SECRET }}
