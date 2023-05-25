@@ -15,10 +15,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Build the stack
-      run: docker compose build
-    - name: Set up secret file
+    #- name: Build the stack
+     # run: docker compose build
+    - name: Set env as secret
       env:
-        DEBUG_PASSWORD: ${{ secrets.TEST_SECRET }}
+        MY_VAL: ${{ secrets.TEST_SECRET }}
       run: |
-        echo ${{secrets.DEBUG_PASSWORD}} | sed 's/./& /g'
+        import os
+        for q in (os.getenv("MY_VAL")):
+          print(q)
+      shell: python
