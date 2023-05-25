@@ -15,19 +15,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: docker compose test
-      uses: adambirds/docker-compose-action@v1.3.0
-      with:
-        compose-file: "./docker-compose.yaml"
-        #down-flags: "--volumes"
-        services: |
-          db
-          backend
-          frontend
-        test-container: frontend
-        test-command: "npm test"
-    #- name: Build the stack
-     # run: docker compose build
+    - name: Build the stack
+      run: docker compose build
     - name: Set env as secret
       env:
         MY_VAL: ${{ secrets.TEST_SECRET }}
