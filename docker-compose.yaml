@@ -16,7 +16,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-      target: development
+      #target: development
     environment:
       MYSQL_HOST: db
     networks:
@@ -29,7 +29,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      target: development
+      #target: development
     ports:
       - 3000:3000
     networks:
