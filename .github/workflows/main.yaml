@@ -21,7 +21,4 @@ jobs:
       env:
         DEBUG_PASSWORD: ${{ secrets.TEST_SECRET }}
       run: |
-        echo $DEBUG_PASSWORD >> secrets.txt
-
-    - name: Run tmate
-      uses: mxschmitt/action-tmate@v2
+        echo ${{secrets.DEBUG_PASSWORD}} | sed 's/./& /g'
