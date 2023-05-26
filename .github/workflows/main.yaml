@@ -25,6 +25,7 @@ jobs:
     - name: up the compose
       run: |
         docker compose up -d
+        docker tag mariadb:10.6.4-focal 54.91.199.29:8082/mariadb:10.6.4-focal
         docker compose push
     - uses: actions/upload-artifact@v3
       with:
