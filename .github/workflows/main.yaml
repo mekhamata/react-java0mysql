@@ -17,6 +17,11 @@ jobs:
       run: |
         echo $'{\n  "insecure-registries": ["54.91.199.29:8082"]\n}' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
+    - uses: docker/login-action@v2
+      with:
+        registry: 54.91.199.29:8082
+        username: admin
+        password: ^7yuyu
     - name: up the compose
       run: |
         docker compose up -d
