@@ -27,7 +27,7 @@ services:
       - db
     restart: on-failure:5
   frontend:
-    image: "${NEXUS_SERVER}:8082/frontend:latest"
+    image: "${NEXUS_SERVER}:8082/frontend:${NOW}"
     build:
       context: ./frontend
       dockerfile: Dockerfile
