@@ -19,7 +19,7 @@ jobs:
       run: docker compose build
 
   test:
-
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
     - name: up the compose
       run: docker compose up -d
   upload_to_nexus:
-
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
