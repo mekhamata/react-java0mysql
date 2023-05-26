@@ -32,7 +32,7 @@ jobs:
     - name: push the compose
       run: docker compose push
   upload_artifact:
-    needs: build_and_test
+    needs: upload_to_nexus
     runs-on: ubuntu-latest
 
     steps:
