@@ -13,7 +13,7 @@ services:
     networks:
       - spring-mysql
   backend:
-    image: "${NEXUS_SERVER}:8082/backend:latest"
+    image: "${NEXUS_SERVER}:8082/backend:${NOW}"
     build:
       context: ./backend
       dockerfile: Dockerfile
