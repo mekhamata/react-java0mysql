@@ -5,7 +5,6 @@ on:
     branches: [ "dev" ]
   pull_request:
     branches: [ "dev" ]
-
 jobs:
 
   build_and_test:
@@ -38,6 +37,8 @@ jobs:
           .
           !./.git
           !./.github
+    - name: echo registry
+      run: echo "${{ vars.REGISTRY_HOST }}"
     # - name: Set env as secret
     #   env:
     #     MY_VAL: ${{ secrets.TEST_SECRET }}
