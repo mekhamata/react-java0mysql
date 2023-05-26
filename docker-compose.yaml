@@ -13,7 +13,7 @@ services:
     networks:
       - spring-mysql
   backend:
-    image: 54.91.199.29:8082/backend:latest
+    image: "${NEXUS_SERVER}:8082/backend:latest"
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
       - db
     restart: on-failure:5
   frontend:
-    image: 54.91.199.29:8082/frontend:latest
+    image: "${NEXUS_SERVER}:8082/frontend:latest"
     build:
       context: ./frontend
       dockerfile: Dockerfile
