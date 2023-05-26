@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "dev" ]
 jobs:
-
+  #build_and_test
   build_and_test:
     runs-on: ubuntu-latest
 
@@ -14,7 +14,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: up the compose
-      run: docker compose up -d
+      run: |
+        docker compose up -d
+        docker compose push
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
@@ -22,35 +24,24 @@ jobs:
          .
          !./.git
          !./.github
-  upload_to_nexus:
-    needs: build_and_test
-    runs-on: ubuntu-latest
+  #upload_artifact
+  # upload_artifact:
+  #   needs: upload_to_nexus
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: push the compose
-      run: |
-        docker compose build
-        docker compose images
-        #docker compose push
-  upload_artifact:
-    needs: upload_to_nexus
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Create the Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: my-artifact--${{ github.sha }}
-        path: |
-          .
-          !./.git
-          !./.github
-    - name: echo registry
-      run: echo "${{ vars.REGISTRY_HOST }}"
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+  #   - name: Create the Artifact
+  #     uses: actions/upload-artifact@v3
+  #     with:
+  #       name: my-artifact--${{ github.sha }}
+  #       path: |
+  #         .
+  #         !./.git
+  #         !./.github
+  #   - name: echo registry
+  #     run: echo "${{ vars.REGISTRY_HOST }}"
     # - name: Set env as secret
     #   env:
     #     MY_VAL: ${{ secrets.TEST_SECRET }}
