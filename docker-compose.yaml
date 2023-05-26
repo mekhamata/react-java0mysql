@@ -13,7 +13,7 @@ services:
     networks:
       - spring-mysql
   backend:
-    image: 54.91.199.29:8081/repository/reactmysql/backend:latest
+    image: 54.91.199.29:8082/repository/reactmysql/backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
