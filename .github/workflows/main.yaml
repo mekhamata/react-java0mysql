@@ -14,9 +14,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Enable experimental features for the Docker daemon and CLI
-        run: |
-          echo $'{\n  "insecure-registries": ["54.91.199.29:8082"]\n}' | sudo tee /etc/docker/daemon.json
-          sudo service docker restart
+      run: |
+        echo $'{\n  "insecure-registries": ["54.91.199.29:8082"]\n}' | sudo tee /etc/docker/daemon.json
+        sudo service docker restart
     - name: up the compose
       run: |
         docker compose up -d
