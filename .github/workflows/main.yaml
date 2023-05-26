@@ -22,14 +22,11 @@ jobs:
       run: |
         echo $'{\n  "insecure-registries": ["${{ steps.dotenv.outputs.nexus_server }}:8082"]\n}' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
-      env:
-          NEXUS_USER: ${{ secrets.NEXUS_USER }}
-          NEXUS_PASS: ${{ secrets.NEXUS_PASS }}
     - uses: docker/login-action@v2
       with:
         registry: ${{ steps.dotenv.outputs.nexus_server }}:8082
-        username: ${NEXUS_USER}
-        password: ${NEXUS_PASS}
+        username: ${{ secrets.NEXUS_USER }}
+        password: ${{ secrets.NEXUS_PASS }}
     - name: up the compose
       run: |
         docker compose up -d
