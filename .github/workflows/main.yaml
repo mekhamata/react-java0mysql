@@ -19,7 +19,7 @@ jobs:
       run: echo "NOW=$(date +'%Y_%m_%d_%H_%M_%S')" >> $GITHUB_ENV
     - name: Enable experimental features for the Docker daemon and CLI
       run: |
-        echo $'{\n  "insecure-registries": ["${NEXUS_SERVER}:8082"]\n}' | sudo tee /etc/docker/daemon.json
+        echo $'{\n  "insecure-registries": ["$NEXUS_SERVER:8082"]\n}' | sudo tee /etc/docker/daemon.json
         sudo service docker restart
     - uses: docker/login-action@v2
       with:
