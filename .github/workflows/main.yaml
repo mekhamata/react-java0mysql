@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Set current date as env variable
+      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
     - name: Enable experimental features for the Docker daemon and CLI
       run: |
         echo $'{\n  "insecure-registries": ["18.212.57.56:8082"]\n}' | sudo tee /etc/docker/daemon.json
