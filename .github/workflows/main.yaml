@@ -30,7 +30,10 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
-        path: .
+        path: |
+         .
+         !./.git
+         !./.github
     # - name: Set env as secret
     #   env:
     #     MY_VAL: ${{ secrets.TEST_SECRET }}
