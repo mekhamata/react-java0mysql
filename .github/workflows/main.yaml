@@ -22,6 +22,15 @@ jobs:
          .
          !./.git
          !./.github
+  upload_to_nexus:
+    needs: build_and_test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: push the compose
+      run: docker compose push
   upload_artifact:
     needs: build_and_test
     runs-on: ubuntu-latest
