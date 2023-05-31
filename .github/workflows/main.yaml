@@ -39,7 +39,7 @@ jobs:
       run: mvn package --file backend/pom.xml -DoutputDirectory=backend/target
     - name: Nexus Repo Publish
       run: |
-        ls
+        ls backend
       # uses: sonatype-nexus-community/nexus-repo-github-action@master
       # with:
       #   serverUrl: http://${{ steps.dotenv.outputs.nexus_server }}:8081
