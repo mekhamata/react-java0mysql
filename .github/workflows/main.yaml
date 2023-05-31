@@ -31,6 +31,23 @@ jobs:
       run: |
         docker compose up -d
         docker compose push
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Build with Maven
+      run: mvn package --file backend/pom.xml
+    - name: Nexus Repo Publish
+      uses: sonatype-nexus-community/nexus-repo-github-action@master
+      with:
+        serverUrl: http://34.201.241.150:8081
+        username: admin
+        password: ${{ secrets.NEXUS_PASS }}
+        format: maven2
+        repository: reactmysql-maven-g
+        coordinates: groupId=com.example artifactId=spring-boot-starter-parent version=1.0.0
+        assets: extension=jar
+        filename: ./backend/target/spring-boot-starter-parent-1.0.0.jar
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
