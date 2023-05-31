@@ -44,7 +44,7 @@ jobs:
         username: admin
         password: ${{ secrets.NEXUS_PASS }}
         format: maven2
-        repository: reactmysql-maven-g
+        repository: reactmysql-maven-g/
         coordinates: groupId=com.example artifactId=project version=1.0.0
         assets: extension=jar
         filename: backend/target/project-0.0.1-SNAPSHOT.jar
