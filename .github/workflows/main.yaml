@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Project 6 Build and Push
 
 on:
   push:
@@ -42,7 +42,7 @@ jobs:
         ls
       # uses: sonatype-nexus-community/nexus-repo-github-action@master
       # with:
-      #   serverUrl: http://34.201.241.150:8081
+      #   serverUrl: http://${{ steps.dotenv.outputs.nexus_server }}:8081
       #   username: admin
       #   password: ${{ secrets.NEXUS_PASS }}
       #   format: maven2
@@ -57,3 +57,30 @@ jobs:
          .
          !./.git
          !./.github
+  #upload_artifact
+  # upload_artifact:
+  #   needs: upload_to_nexus
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+  #   - name: Create the Artifact
+  #     uses: actions/upload-artifact@v3
+  #     with:
+  #       name: my-artifact--${{ github.sha }}
+  #       path: |
+  #         .
+  #         !./.git
+  #         !./.github
+  #   - name: echo registry
+  #     run: echo "${{ vars.REGISTRY_HOST }}"
+    # - name: Set env as secret
+    #   env:
+    #     MY_VAL: ${{ secrets.TEST_SECRET }}
+    #   run: |
+    #     import os
+    #     for q in (os.getenv("MY_VAL")):
+    #       print(q)
+    #   shell: python
+      
