@@ -38,18 +38,16 @@ jobs:
     - name: Build with Maven
       run: mvn package --file backend/pom.xml -DoutputDirectory=backend/target
     - name: Nexus Repo Publish
-      run: |
-        ls backend/target
-      # uses: sonatype-nexus-community/nexus-repo-github-action@master
-      # with:
-      #   serverUrl: http://${{ steps.dotenv.outputs.nexus_server }}:8081
-      #   username: admin
-      #   password: ${{ secrets.NEXUS_PASS }}
-      #   format: maven2
-      #   repository: reactmysql-maven-g
-      #   coordinates: groupId=com.example artifactId=spring-boot-maven-plugin version=1.0.0
-      #   assets: extension=jar
-      #   filename: backend/target/spring-boot-maven-plugin-1.0.0.jar
+      uses: sonatype-nexus-community/nexus-repo-github-action@master
+      with:
+        serverUrl: http://${{ steps.dotenv.outputs.nexus_server }}:8081
+        username: admin
+        password: ${{ secrets.NEXUS_PASS }}
+        format: maven2
+        repository: reactmysql-maven-g
+        coordinates: groupId=com.example artifactId=project version=1.0.0
+        assets: extension=jar
+        filename: backend/target/project-0.0.1-SNAPSHOT.jar
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
