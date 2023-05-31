@@ -36,7 +36,7 @@ jobs:
       with:
         java-version: '11'
     - name: Build with Maven
-      run: mvn package --file backend/pom.xml
+      run: mvn package --file backend/pom.xml -DoutputDirectory=target
     - name: Nexus Repo Publish
       uses: sonatype-nexus-community/nexus-repo-github-action@master
       with:
@@ -47,7 +47,7 @@ jobs:
         repository: reactmysql-maven-g
         coordinates: groupId=com.example artifactId=spring-boot-maven-plugin version=1.0.0
         assets: extension=jar
-        filename: ./backend/target/spring-boot-maven-plugin-1.0.0.jar
+        filename: backend/target/spring-boot-maven-plugin-1.0.0.jar
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
