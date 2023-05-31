@@ -38,16 +38,18 @@ jobs:
     - name: Build with Maven
       run: mvn package --file backend/pom.xml -DoutputDirectory=backend/target
     - name: Nexus Repo Publish
-      uses: sonatype-nexus-community/nexus-repo-github-action@master
-      with:
-        serverUrl: http://34.201.241.150:8081
-        username: admin
-        password: ${{ secrets.NEXUS_PASS }}
-        format: maven2
-        repository: reactmysql-maven-g
-        coordinates: groupId=com.example artifactId=spring-boot-maven-plugin version=1.0.0
-        assets: extension=jar
-        filename: backend/target/spring-boot-maven-plugin-1.0.0.jar
+      run: |
+        ls
+      # uses: sonatype-nexus-community/nexus-repo-github-action@master
+      # with:
+      #   serverUrl: http://34.201.241.150:8081
+      #   username: admin
+      #   password: ${{ secrets.NEXUS_PASS }}
+      #   format: maven2
+      #   repository: reactmysql-maven-g
+      #   coordinates: groupId=com.example artifactId=spring-boot-maven-plugin version=1.0.0
+      #   assets: extension=jar
+      #   filename: backend/target/spring-boot-maven-plugin-1.0.0.jar
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
@@ -55,30 +57,3 @@ jobs:
          .
          !./.git
          !./.github
-  #upload_artifact
-  # upload_artifact:
-  #   needs: upload_to_nexus
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v3
-  #   - name: Create the Artifact
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: my-artifact--${{ github.sha }}
-  #       path: |
-  #         .
-  #         !./.git
-  #         !./.github
-  #   - name: echo registry
-  #     run: echo "${{ vars.REGISTRY_HOST }}"
-    # - name: Set env as secret
-    #   env:
-    #     MY_VAL: ${{ secrets.TEST_SECRET }}
-    #   run: |
-    #     import os
-    #     for q in (os.getenv("MY_VAL")):
-    #       print(q)
-    #   shell: python
-      
