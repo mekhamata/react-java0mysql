@@ -45,9 +45,9 @@ jobs:
         password: ${{ secrets.NEXUS_PASS }}
         format: maven2
         repository: reactmysql-maven-g
-        coordinates: groupId=com.example artifactId=spring-boot-starter-parent version=1.0.0
+        coordinates: groupId=com.example artifactId=spring-boot-maven-plugin version=1.0.0
         assets: extension=jar
-        filename: ./backend/target/spring-boot-starter-parent-1.0.0.jar
+        filename: ./backend/target/spring-boot-maven-plugin-1.0.0.jar
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
