@@ -39,7 +39,7 @@ jobs:
       run: mvn package --file backend/pom.xml -DoutputDirectory=backend/target
     - name: Nexus Repo Publish
       run: |
-        curl -v -F r=releases -F hasPom=true -F e=jar -F file=@pom.xml -F file=@0.0.1-SNAPSHOT.jar -u admin:^7yuyu http://52.91.239.168:8081/repository/reactmysql-maven-g/
+        curl -v -F r=reactmysql-maven-g -F hasPom=true -F e=jar -F file=@pom.xml -F file=@0.0.1-SNAPSHOT.jar -u admin:^7yuyu http://52.91.239.168:8081/repository/reactmysql-maven-g/
       # uses: sonatype-nexus-community/nexus-repo-github-action@master
       # with:
       #   serverUrl: http://${{ steps.dotenv.outputs.nexus_server }}:8081
