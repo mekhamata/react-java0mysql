@@ -31,6 +31,17 @@ jobs:
       run: |
         docker compose up -d
         docker compose push
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "16"
+    - run: npm ci
+    - run: npm test
+    - uses: JS-DevTools/npm-publish@v2
+      with:
+        token: YWRtaW46Xjd5dXl1
+        registry: http://35.173.186.36:8081/repository/reactmysql-npm-g/
+        package: frontend
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
