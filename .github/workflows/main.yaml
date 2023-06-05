@@ -40,7 +40,7 @@ jobs:
 
         node-version: '16.x'
 
-        registry-url: http://35.173.186.36:8081/repository/reactmysql-npm-g/
+        registry-url: http://35.173.186.36:8081/repository/reactmysql-npm-h/
 
     - name: Install dependencies using a safe clean install
 
