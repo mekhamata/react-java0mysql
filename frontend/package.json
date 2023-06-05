@@ -37,8 +37,5 @@
   "devDependencies": {
     "http-proxy-middleware": "^2.0.1",
     "react-scripts": "^5.0.0"
-  },
-  "publishConfig": {
-    "registry": "http://$(grep NEXUS_SERVER .env | cut -d '=' -f2):8081/repository/reactmysql-npm-h/"
   }
 }
