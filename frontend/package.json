@@ -39,6 +39,6 @@
     "react-scripts": "^5.0.0"
   },
   "publishConfig": {
-    "registry": "http://35.173.186.36:8081/repository/reactmysql-npm-h/"
+    "registry": "http://54.159.245.65:8081/repository/reactmysql-npm-h/"
   }
 }
