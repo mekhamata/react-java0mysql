@@ -38,18 +38,18 @@ jobs:
     - name: Build with Maven
       run: mvn package --file backend/pom.xml -DoutputDirectory=backend/target
     - name: Nexus Repo Publish
-      run: |
-        curl -v -F r=reactmysql-maven-g -F hasPom=true -F e=jar -F file=@pom.xml -F file=@0.0.1-SNAPSHOT.jar -u admin:^7yuyu http://52.91.239.168:8081/repository/reactmysql-maven-g/
-      # uses: sonatype-nexus-community/nexus-repo-github-action@master
-      # with:
-      #   serverUrl: http://${{ steps.dotenv.outputs.nexus_server }}:8081
-      #   username: admin
-      #   password: ${{ secrets.NEXUS_PASS }}
-      #   format: maven2
-      #   repository: reactmysql-maven-h
-      #   coordinates: groupId=com.company artifactId=project version=0.0.1-SNAPSHOT
-      #   assets: extension=jar
-      #   filename: backend/target/project-0.0.1-SNAPSHOT.jar
+      # run: |
+      #   curl -v -F r=reactmysql-maven-g -F hasPom=true -F e=jar -F file=@pom.xml -F file=@0.0.1-SNAPSHOT.jar -u admin:^7yuyu http://52.91.239.168:8081/repository/reactmysql-maven-g/
+      uses: sonatype-nexus-community/nexus-repo-github-action@master
+      with:
+        serverUrl: http://${{ steps.dotenv.outputs.nexus_server }}:8081
+        username: admin
+        password: ${{ secrets.NEXUS_PASS }}
+        format: maven2
+        repository: reactmysql-maven-h
+        coordinates: groupId=com.company artifactId=project version=0.0.1-SNAPSHOT
+        assets: extension=jar
+        filename: backend/target/project-0.0.1-SNAPSHOT.jar
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
