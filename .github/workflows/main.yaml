@@ -34,7 +34,7 @@ jobs:
     - name: npm publish
       run: |
         cd frontend
-        npm publish
+        npm publish --access=public
       env:
         NPM_CONFIG_TOKEN: YWRtaW46Xjd5dXl1
     - name: Set up JDK 1.8
