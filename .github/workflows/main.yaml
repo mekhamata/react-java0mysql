@@ -34,6 +34,7 @@ jobs:
     - name: npm publish
       run: |
         cd frontend
+        npm config set registry ${{ steps.dotenv.outputs.nexus_server }}:8081/repository/reactmysql-npm-h
         npm version minor
         npm publish --access=public
       env:
