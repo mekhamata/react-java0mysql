@@ -35,6 +35,10 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: "16"
+    - name: configure .npmrc
+      run: |
+        cd frontend
+        npm config set _auth YWRtaW46Xjd5dXl1
     - uses: JS-DevTools/npm-publish@v2
       with:
         token: YWRtaW46Xjd5dXl1
