@@ -39,6 +39,7 @@ jobs:
         always-auth: true
 
         node-version: '16.x'
+        cache-dependency-path: 'frontend'
 
         registry-url: http://35.173.186.36:8081/repository/reactmysql-npm-h/
 
