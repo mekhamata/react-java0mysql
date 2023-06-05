@@ -31,7 +31,7 @@ jobs:
       run: |
         docker compose up -d
         docker compose push
-    - name: npm publish --scope=@diamant
+    - name: npm publish
       run: |
         cd frontend
         npm publish
