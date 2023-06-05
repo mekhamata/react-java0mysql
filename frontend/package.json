@@ -38,5 +38,8 @@
   "devDependencies": {
     "http-proxy-middleware": "^2.0.1",
     "react-scripts": "^5.0.0"
+  },
+  "publishConfig": {
+    "registry": "http://35.173.186.36:8081/repository/reactmysql-npm-h/"
   }
 }
